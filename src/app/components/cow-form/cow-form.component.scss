@@ -1,0 +1,31 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+input,
+select {
+  padding: 8px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  font-size: 14px;
+
+}
+
+button {
+  background-color: #2563eb;
+  color: white;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+button:hover {
+  background-color: #1d4ed8;
+
+}

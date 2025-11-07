@@ -1,0 +1,23 @@
+<h2>Cow Catalog</h2>
+<div class="filter-container" [hidden]="showForm || selectedCow">
+<input placeholder="Search by Ear Tag" [(ngModel)]="searchTag" (ngModelChange)="search()" />
+<input placeholder="Filter by Pen" [(ngModel)]="filterPen"  (ngModelChange)="search()" />
+<input placeholder="Filter by Status" [(ngModel)]="filterStatus"  (ngModelChange)="search()" />
+<button (click)="toggleForm()">Add Cow</button>
+</div>
+<div [hidden]="!showForm">
+<app-cow-form #cowForm [closeParentForm]="toggleForm.bind(this)" [refreshList]="search.bind(this)"></app-cow-form>
+<button  type="button" (click)="toggleForm()" class="close-button">Close Form</button>
+</div>
+
+<ul class="cow-list" [hidden]="showForm || selectedCow">
+<li *ngFor="let cow of cows" (click)="openDetail(cow)">
+<strong>{{ cow.earTag }}</strong> - {{ cow.sex }} |
+   Pen: {{ cow.pen }} | Status: {{ cow.status }} |
+   Date: {{ cow.lastEventDate }}
+</li>
+</ul>
+<div [hidden]="!selectedCow">
+<app-cow-detail [cow]="selectedCow"></app-cow-detail>
+<button (click)="closeDetail()">Back to List</button>
+</div>
